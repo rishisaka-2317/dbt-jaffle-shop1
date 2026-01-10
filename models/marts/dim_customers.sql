@@ -31,7 +31,7 @@ final as (
 
 
     select
-       customers.customer_id ,
+       customers.customer_id,
         customers.first_name ,
         customers.last_name as lastname,
         customer_orders.first_order_date,
