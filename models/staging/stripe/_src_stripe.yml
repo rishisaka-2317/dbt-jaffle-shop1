@@ -1,0 +1,29 @@
+version: 2
+
+sources:
+  - name: stripe          # name of the source
+    database: raw         # your raw database name
+    schema: stripe        # schema where the raw table lives
+    description: "Raw Stripe tables from payment system"
+
+    tables:
+      - name: payment
+        description: "Raw payment table from Stripe"
+        columns:
+          - name: id
+            description: "Primary key for payment"
+            tests:
+              - not_null
+              - unique
+          - name: orderid
+            description: "Order ID for this payment"
+            tests:
+              - not_null
+          - name: paymentmethod
+            description: "Payment method used"
+          - name: status
+            description: "Payment status (e.g., success, failed)"
+          - name: amount
+            description: "Amount in cents"
+          - name: created
+            description: "Payment creation timestamp"

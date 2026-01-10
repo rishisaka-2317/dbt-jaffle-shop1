@@ -1,27 +1,25 @@
 version: 2
 
 models:
-  - name: stg_jaffle_shop_customers
-    description: "Cleaned customer data from jaffle_shop"
+  - name: stg_jaffle_shop__customers
+    description: "Cleaned customer data"
     columns:
       - name: customer_id
-        description: "Primary key for customers"
         tests:
           - not_null
           - unique
 
-  - name: stg_jaffle_shop_orders
-    description: "Cleaned order data from jaffle_shop"
+  - name: stg_jaffle_shop__orders
+    description: "Cleaned orders data"
     columns:
       - name: order_id
-        description: "Primary key for orders"
         tests:
           - not_null
           - unique
       - name: customer_id
-        description: "Foreign key to customers"
         tests:
           - not_null
           - relationships:
-              to: ref('stg_jaffle_shop_customers')
-              field: customer_id
+              arguments:
+                field: customer_id
+                to: ref('stg_jaffle_shop__customers')
